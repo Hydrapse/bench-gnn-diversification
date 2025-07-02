@@ -1,0 +1,8 @@
+name: squirrel
+filtered: true
+
+train_rate: null
+val_rate: null
+
+#train_rate: 0.6
+#val_rate: 0.2

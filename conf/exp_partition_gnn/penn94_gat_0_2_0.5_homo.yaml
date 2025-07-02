@@ -1,0 +1,32 @@
+# @package _global_
+
+defaults:
+  - override /dataset: penn94.yaml
+
+runs: 10
+trial_dir: partition_eval
+
+dataset:
+  expert_id: 0
+  num_experts: 2
+  fraction: 0.5
+  group: homophily
+
+train:
+  epoch: 700
+  lr: 0.005
+
+model:
+  name: GAT
+  hidden_dim: 64
+  init_layers: 0
+  conv_layers: 2
+  norm: layer
+  out_norm: false
+  init_dropout: 0.2
+  dropout: 0.5
+  jk: last
+  residual: sum
+  heads: 2
+  attn_dropout: 0
+  v2: true

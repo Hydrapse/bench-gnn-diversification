@@ -1,0 +1,52 @@
+# @package _global_
+
+defaults:
+  - override /dataset: arxiv-year.yaml
+#  - override /hydra/sweeper: optuna
+#  - override /hydra/sweeper/sampler: tpe
+#
+#hydra:
+#  sweeper:
+#    study_name: arxiv-year_dirgcn_0_2_0.5_dir-dist
+#    direction: maximize
+#    n_trials: 200
+#    storage: sqlite:///${proc_dir}/trial_${trial_dir}/optuna_studies.db
+#    n_jobs: 1
+#    params:
+#      train.lr: choice(0.005, 0.001, 0.0007, 0.0005, 0.0003, 0.0001)
+#      model.hidden_dim: choice(256, 512)
+#      model.dropout: choice(0., 0.1, 0.3, 0.5)
+#      model.init_layers: choice(0, 1)
+#      model.norm: choice('layer', 'batch', 'null')
+#      model.jk: choice('last', 'attn', 'null')
+#      model.residual: choice('sum', 'cat', 'null')
+
+runs: 5
+trial_dir: partition_eval
+
+dataset:
+  undirected: false
+  expert_id: 0
+  num_experts: 2
+  fraction: 0.5
+  group: directional_label_distance
+
+train:
+  epoch: 4000
+  lr: 0.0005
+  weight_decay: 0
+  early_stopping: -1
+
+model:
+  name: DIRGCN
+  hidden_dim: 256
+  init_layers: 0
+  conv_layers: 6
+  norm: null  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.
+  dropout: 0.3
+  jk: last  # cat, max
+  residual: null  # sum, incep
+
+  dir_alpha: 0.5

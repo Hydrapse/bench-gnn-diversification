@@ -1,0 +1,4 @@
+name: minesweeper
+
+train_rate: null
+val_rate: null

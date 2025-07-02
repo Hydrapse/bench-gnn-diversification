@@ -1,0 +1,36 @@
+# @package _global_
+
+defaults:
+  - override /dataset: squirrel.yaml
+
+runs: 10
+
+log_logit: false
+
+dataset:
+  undirected: false
+
+train:
+  epoch: 1000
+  lr: 0.05
+  weight_decay: 0
+  early_stopping: 200
+
+model:
+  name: DIRGCN  # GCN
+  hidden_dim: 256
+  init_layers: 1
+  conv_layers: 6  # hops
+  norm: batch  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.7
+  dropout: 0.6
+  jk: last  # cat
+  residual: cat  # sum, incep
+
+  dir_alpha: 0.5
+
+  ######### Comments #########
+
+  # Valid: 45.40 ±1.42
+  # Test: 45.36 ±1.74

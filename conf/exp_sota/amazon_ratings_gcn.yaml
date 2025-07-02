@@ -1,0 +1,26 @@
+# @package _global_
+
+defaults:
+  - override /dataset: amazon_ratings.yaml
+
+runs: 10
+
+train:
+  epoch: 2500
+  lr: 5.0e-05
+
+model:
+  name: GCN
+  hidden_dim: 512
+  init_layers: 1
+  conv_layers: 2
+  norm: layer
+  out_norm: false
+  init_dropout: 0.2
+  dropout: 0.2
+  dropedge: 0
+  jk: attn
+  residual: sum
+  adj_norm: rw
+
+  # Valid: 54.84 ±0.43, Test: 54.10 ±0.55

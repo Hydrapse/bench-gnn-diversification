@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - override /dataset: pubmed.yaml
+
+runs: 10
+trial_dir: partition_eval
+
+train:
+  epoch: 700
+  lr: 0.005
+
+model:
+  name: GCN
+  hidden_dim: 512
+  init_layers: 1
+  conv_layers: 2
+  norm: layer
+  out_norm: false
+  adj_norm: rw
+  init_dropout: 0.2
+  dropout: 0.5
+  jk: null
+  residual: cat

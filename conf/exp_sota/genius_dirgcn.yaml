@@ -1,0 +1,31 @@
+# @package _global_
+
+defaults:
+  - override /dataset: genius.yaml
+
+runs: 10
+
+log_logit: false
+
+dataset:
+  undirected: false
+
+train:
+  epoch: 1500
+  lr: 0.0005
+  weight_decay: 0
+  early_stopping: -1
+
+model:
+  name: DIRGCN
+  hidden_dim: 128
+  init_layers: 1
+  conv_layers: 6
+  norm: null  # layer, batch
+  out_norm: true  # l2 norm
+  init_dropout: 0.
+  dropout: 0.
+  jk: null  # cat, max
+  residual: cat  # sum, incep
+
+  dir_alpha: 0.5

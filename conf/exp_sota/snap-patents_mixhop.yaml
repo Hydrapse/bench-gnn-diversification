@@ -1,0 +1,28 @@
+# @package _global_
+
+defaults:
+  - override /dataset: snap-patents.yaml
+
+runs: 10
+
+dataset:
+  undirected: true
+
+train:
+  epoch: 2000
+  lr: 0.0005
+
+model:
+  name: MIXHOP
+  hidden_dim: 32
+  init_layers: 1
+  conv_layers: 5
+  norm: layer
+  out_norm: true
+  init_dropout: 0
+  dropout: 0.
+  dropedge: 0
+  jk: last
+  residual: cat
+
+  powers: [1, 2]

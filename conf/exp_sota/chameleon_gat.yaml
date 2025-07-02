@@ -1,0 +1,38 @@
+# @package _global_
+
+defaults:
+  - override /dataset: chameleon.yaml
+
+runs: 10
+
+dataset:
+  ptb_type: null
+  ptb_ratio: 0
+  name: chameleon
+  filtered: true
+  train_rate: null
+  val_rate: null
+  undirected: true
+train:
+  epoch: 1000
+  lr: 0.0005
+  weight_decay: 0
+  early_stopping: 200
+  grad_norm: null
+  use_adamw: true
+  train_mask_rate: 1
+  use_label: false
+model:
+  name: GAT
+  hidden_dim: 256
+  init_layers: 0
+  conv_layers: 2
+  norm: layer
+  out_norm: false
+  init_dropout: 0
+  dropout: 0.4
+  dropedge: 0
+  jk: attn
+  residual: sum
+  heads: 2
+  adj_norm: sym

@@ -1,0 +1,29 @@
+# @package _global_
+
+defaults:
+  - override /dataset: penn94.yaml
+
+runs: 10
+
+log_logit: false
+
+train:
+  epoch: 700
+  lr: 0.01
+  weight_decay: 1e-5
+  early_stopping: -1
+  use_adamw: false
+
+model:
+  name: MIXHOP
+  hidden_dim: 32
+  init_layers: 1
+  conv_layers: 4
+  norm: batch  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.1
+  dropout: 0.6
+  jk: null  # cat, max
+  residual: null  # sum, incep
+
+  powers: [0, 1]

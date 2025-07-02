@@ -1,0 +1,38 @@
+# @package _global_
+
+defaults:
+  - override /dataset: squirrel.yaml
+
+runs: 10
+
+dataset:
+  ptb_type: null
+  ptb_ratio: 0
+  name: squirrel
+  filtered: true
+  train_rate: null
+  val_rate: null
+  undirected: true
+train:
+  epoch: 1000
+  lr: 0.005
+  weight_decay: 0
+  early_stopping: 200
+  grad_norm: null
+  use_adamw: true
+  train_mask_rate: 1
+  use_label: false
+model:
+  name: GAT
+  hidden_dim: 512
+  init_layers: 1
+  conv_layers: 4
+  norm: batch
+  out_norm: false
+  init_dropout: 0
+  dropout: 0.7
+  dropedge: 0
+  jk: null
+  residual: cat
+  heads: 4
+  adj_norm: sym

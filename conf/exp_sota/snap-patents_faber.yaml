@@ -1,0 +1,32 @@
+# @package _global_
+
+defaults:
+  - override /dataset: snap-patents.yaml
+
+runs: 10
+
+log_logit: false
+
+train:
+  epoch: 2000
+  lr: 0.0005
+  early_stopping: -1
+
+model:
+  name: FABER
+  hidden_dim: 32  # 64: 75.04
+  init_layers: 0
+  conv_layers: 5
+  norm: null  # layer, batch
+  out_norm: true  # l2 norm
+  init_dropout: 0.
+  dropout: 0.
+  jk: max  # cat, max
+  residual: cat  # sum, incep
+
+  dir_alpha: 0.5
+  k_plus: 2  # 1, 2
+#  weight_penalty: exp
+  weight_penalty: null
+  exponent: -0.25
+  zero_order: false

@@ -1,0 +1,36 @@
+# @package _global_
+
+defaults:
+  - override /dataset: flickr.yaml
+
+runs: 10
+
+log_logit: false
+
+train:
+  epoch: 1000
+  lr: 0.001
+
+model:
+  name: GAT
+  hidden_dim: 256
+  init_layers: 0
+  conv_layers: 6  # hops
+  norm: batch  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.1
+  dropout: 0.5
+  jk: null  # cat
+  residual: null  # sum, incep
+
+  heads: 8
+#  edge_dropout: 0.1
+  attn_dropout: 0.
+#  symmetric_norm: false
+
+  ###########################
+  # Comments:
+  # Test: 0.5532
+  #
+  # Important Param:
+  # - heads

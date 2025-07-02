@@ -1,0 +1,71 @@
+# @package _global_
+
+defaults:
+  - override /dataset: amazon_ratings.yaml
+
+trial_dir: partition_eval
+
+expert:
+#  - arch: 'GCN-jkATTN-resSUM-dropout0.5-init1'
+#    domain: 'homophily-0.5-2_0'
+#  - arch: 'GCN-jkATTN-dropout0.5-init1'
+#    domain: 'homophily-0.5-2_1'
+
+#  - arch: 'GCN-jkATTN-resSUM-dropout0.2-init1'
+#    domain: 'random-0.5-2_0'
+#  - arch: 'GCN-jkATTN-resSUM-dropout0.2-init1'
+#    domain: 'random-0.5-2_1'
+
+#  - arch: 'GCN-jkATTN-resSUM-dropout0.2-init1'
+
+#  - arch: 'GCN-jkLAST-resCAT-dropout0.5-init1'
+#    domain: 'intra_class_neighborhood_feature_cos_similarity_norm-0.5-2_0'
+#  - arch: 'GCN-jkATTN-dropout0.5-init1'
+#    domain: 'intra_class_neighborhood_feature_cos_similarity_norm-0.5-2_1'
+
+#  - arch: 'GCN-jkATTN-resSUM-dropout0.5-init1'
+#    domain: 'homophily_2-0.5-2_0'
+#  - arch: 'GCN-jkATTN-dropout0.5-init1'
+#    domain: 'homophily_2-0.5-2_1'
+
+#  - arch: 'GCN-jkATTN-dropout0.2-init1'
+#    domain: 'intra_class_degree-0.5-2_0'
+#  - arch: 'GCN-jkATTN-dropout0.2-init1'
+#    domain: 'intra_class_degree-0.5-2_1'
+
+#  - arch: 'GCN-jkATTN-dropout0.5-init1'
+#    domain: 'intra_class_neighborhood_label_similarity-0.5-2_0'
+#  - arch: 'GCN-jkATTN-dropout0.5-init1'
+#    domain: 'intra_class_neighborhood_label_similarity-0.5-2_1'
+
+#  - arch: 'MLP-jkLAST-resSUM-dropout0.5'
+#    domain: 'homophily-0.5-2_0'
+#  - arch: 'MLP-jkLAST-resSUM-dropout0.5-init1'
+#    domain: 'homophily-0.5-2_1'
+
+train:
+  mixer_epoch: 1000
+  mixer_lr: 0.00005
+
+  log_epoch: 200
+  early_stopping: 300
+
+moscat:
+  val_ratio: 0.1
+  mask_tr_het_ratio: 0.9
+  mask_train:
+    - all_wrong
+
+  encoder:
+    feat_type:
+      - node_feat
+      - logit_aug
+
+  decoder:
+    name: MLP
+    hidden_dim: 512
+    init_layers: 1
+    conv_layers: 3
+    norm: batch
+    out_norm: true
+    residual: sum

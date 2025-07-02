@@ -1,0 +1,31 @@
+# @package _global_
+
+defaults:
+  - override /dataset: chameleon.yaml
+
+runs: 10
+
+log_logit: false
+
+dataset:
+  undirected: true
+
+train:
+  epoch: 1000
+  lr: 0.001
+  weight_decay: 0
+  early_stopping: 200
+
+model:
+  name: MIXHOP
+  hidden_dim: 256
+  init_layers: 0
+  conv_layers: 4  # hops
+  norm: batch  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.5
+  dropout: 0.7
+  jk: last  # cat
+  residual: sum  # sum, incep
+
+  powers: [1, 2]

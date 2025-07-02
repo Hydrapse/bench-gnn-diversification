@@ -1,0 +1,30 @@
+# @package _global_
+
+defaults:
+  - override /dataset: arxiv.yaml
+
+runs: 10
+
+log_logit: false
+
+train:
+  epoch: 500
+  lr: 0.002
+  train_mask_rate: .5
+  use_label: true
+
+model:
+  name: GAT
+  hidden_dim: 420
+  init_layers: 0
+  conv_layers: 3  # hops
+  norm: null  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.1  # be small
+  dropout: 0.75
+  jk: null  # cat
+  residual: null  # sum, incep
+
+  v2: False
+  heads: 3
+  attn_dropout: 0.

@@ -1,0 +1,35 @@
+# @package _global_
+
+defaults:
+  - override /dataset: arxiv-year.yaml
+
+runs: 10
+
+log_logit: false
+
+dataset:
+  undirected: false
+
+train:
+  epoch: 2500
+  lr: 0.0005
+  weight_decay: 0
+  early_stopping: -1
+
+model:
+  name: FABER
+  hidden_dim: 256
+  init_layers: 0
+  conv_layers: 6
+  norm: null  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.
+  dropout: 0.3
+  jk: last  # cat, max
+  residual: null  # sum, incep
+
+  dir_alpha: 0.5
+  k_plus: 2  # 1, 2
+  weight_penalty: null
+  exponent: -0.5
+  zero_order: false

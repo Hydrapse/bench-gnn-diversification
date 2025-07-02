@@ -1,0 +1,6 @@
+name: sage
+batch_size: 64
+fanouts:
+  - 25
+  - 15
+  - 10

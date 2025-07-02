@@ -1,0 +1,47 @@
+# @package _global_
+
+defaults:
+#  - override /dataset: roman_empire.yaml
+  - override /dataset: amazon_ratings.yaml
+#  - override /dataset: minesweeper.yaml
+#  - override /dataset: tolokers.yaml
+#  - override /dataset: questions.yaml
+
+runs: 10
+
+log_logit: false
+
+train:
+  epoch: 2500
+  lr: 0.00005
+  weight_decay: 0
+  early_stopping: -1  # -1 for tolokers
+
+model:
+  name: GAT  # GCN, SAGE, GAT
+  hidden_dim: 512
+  init_layers: 1
+  conv_layers: 3  # hops
+  norm: layer  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0
+  dropout: 0.5
+  jk: last  # cat
+  residual: sum  # sum, incep
+
+  heads: 1  # for amazon-ratings, minesweeper, questions
+#  heads: 8  # for roman-empire
+#  edge_dropout: 0.1
+  attn_dropout: 0.
+#  symmetric_norm: false
+
+
+######### Comments #########
+#
+# Important Param:
+# - jk: last, out classifier
+# - init_layers: 1
+# - residual: sum
+# - norm: layer
+
+# Valid: 54.50 ±0.34, Test: 54.14 ±0.39

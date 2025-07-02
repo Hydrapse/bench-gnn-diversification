@@ -1,0 +1,37 @@
+# @package _global_
+
+defaults:
+  - override /dataset: actor.yaml
+
+runs: 10
+
+dataset:
+  ptb_type: null
+  ptb_ratio: 0
+  name: actor
+  train_rate: 0.6
+  val_rate: 0.2
+  undirected: true
+train:
+  epoch: 1000
+  lr: 0.0005
+  weight_decay: 0
+  early_stopping: -1
+  grad_norm: null
+  use_adamw: true
+  train_mask_rate: 1
+  use_label: false
+model:
+  name: GAT
+  hidden_dim: 128
+  init_layers: 1
+  conv_layers: 2
+  norm: batch
+  out_norm: false
+  init_dropout: 0
+  dropout: 0.5
+  dropedge: 0
+  jk: attn
+  residual: cat
+  heads: 1
+  adj_norm: rw

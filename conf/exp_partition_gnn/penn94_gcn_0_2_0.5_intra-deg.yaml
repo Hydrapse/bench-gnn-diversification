@@ -1,0 +1,30 @@
+# @package _global_
+
+defaults:
+  - override /dataset: penn94.yaml
+
+runs: 10
+trial_dir: partition_eval
+
+dataset:
+  expert_id: 0
+  num_experts: 2
+  fraction: 0.5
+  group: intra_class_degree
+
+train:
+  epoch: 700
+  lr: 0.001
+  early_stopping: -1
+model:
+  name: GCN
+  hidden_dim: 64
+  init_layers: 0
+  conv_layers: 2
+  norm: batch
+  out_norm: false
+  adj_norm: sym
+  init_dropout: 0.2
+  dropout: 0.2
+  jk: attn
+  residual: null

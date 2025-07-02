@@ -1,0 +1,30 @@
+# @package _global_
+
+defaults:
+  - override /dataset: amazon_ratings.yaml
+
+runs: 10
+trial_dir: partition_eval
+
+dataset:
+  expert_id: 0
+  num_experts: 2
+  fraction: 0.5
+  group: intra_class_neighborhood_label_similarity
+
+train:
+  epoch: 2500
+  lr: 0.001
+  early_stopping: -1
+model:
+  name: GCN
+  hidden_dim: 512
+  init_layers: 1
+  conv_layers: 2
+  norm: layer
+  out_norm: false
+  adj_norm: rw
+  init_dropout: 0
+  dropout: 0.5
+  jk: attn
+  residual: null

@@ -1,0 +1,26 @@
+# @package _global_
+
+defaults:
+  - override /dataset: arxiv.yaml
+
+runs: 10
+
+log_logit: false
+
+train:
+  epoch: 1000
+  lr: 0.001
+
+model:
+  name: GCN
+  hidden_dim: 512
+  init_layers: 1
+  conv_layers: 3
+  norm: layer
+  out_norm: false
+  init_dropout: 0.1
+  dropout: 0.6
+  dropedge: 0
+  jk: null
+  residual: cat
+  adj_norm: sym

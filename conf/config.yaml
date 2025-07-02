@@ -1,0 +1,87 @@
+defaults:
+  - _self_
+  - sampler: full_batch
+  - dataset: arxiv
+
+data_dir: DATA
+proc_dir: processed
+ckpt_dir: checkpoint
+trial_dir: default  # log directory
+result_file: default  # result file name
+
+gpu: 0
+ens: 1
+runs: 10
+log_logit: false
+log_result: false
+
+dataset:
+  ptb_type: null
+  ptb_ratio: 0
+
+train:
+  epoch: 500
+  lr: 0.01
+  weight_decay: 0
+  early_stopping: -1
+  grad_norm: null
+  use_adamw: true
+
+  train_mask_rate: 1
+  use_label: false
+
+model:
+  name: GCN
+  hidden_dim: 256
+  init_layers: 0
+  conv_layers: 3
+  norm: null  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.1
+  dropout: 0.5
+  dropedge: 0
+  jk: null  # cat
+  residual: null  # sum, incep
+
+
+log_level: INFO
+hydra:
+  job_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(levelname)s] - %(message)s'
+      colorlog:
+        (): colorlog.ColoredFormatter
+#        format: '[%(log_color)s%(levelname)s%(reset)s] - %(message)s'
+        format: '%(log_color)s[%(levelname)s] - %(message)s%(reset)s'
+        log_colors:
+          DEBUG: green
+          INFO: reset
+          WARNING: yellow
+          ERROR: red
+          CRITICAL: red
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: colorlog
+        stream: ext://sys.stdout
+      file:
+        class: logging.FileHandler
+        formatter: simple
+        filename: ${hydra.runtime.output_dir}/${hydra.job.name}.log
+    root:
+      level: ${log_level}
+      handlers:
+        - console
+        - file
+    disable_existing_loggers: false
+
+
+
+
+
+
+
+
+

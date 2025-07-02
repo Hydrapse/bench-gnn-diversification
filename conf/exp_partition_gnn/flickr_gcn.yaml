@@ -1,0 +1,27 @@
+# @package _global_
+
+defaults:
+  - override /dataset: flickr.yaml
+
+runs: 10
+
+log_logit: false
+trial_dir: partition_eval
+
+train:
+  epoch: 700
+  lr: 0.005
+
+model:
+  name: GCN
+  hidden_dim: 256
+  init_layers: 1
+  conv_layers: 2
+  norm: batch
+  out_norm: false
+  init_dropout: 0.2
+  dropout: 0.6
+  dropedge: 0
+  jk: last
+  residual: null
+  adj_norm: sym

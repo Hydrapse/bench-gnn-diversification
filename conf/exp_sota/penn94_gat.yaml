@@ -1,0 +1,31 @@
+# @package _global_
+
+defaults:
+  - override /dataset: penn94.yaml
+
+runs: 10
+
+log_logit: false
+
+train:
+  epoch: 300
+  lr: 0.01
+  weight_decay: 1e-3
+  early_stopping: -1
+
+model:
+  name: GAT
+  hidden_dim: 32
+  init_layers: 0
+  conv_layers: 3
+  norm: batch  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.
+  dropout: 0.5
+  jk: null  # cat, max
+  residual: null  # sum, incep
+
+  heads: 4
+#  edge_dropout: 0.3
+  attn_dropout: 0.3
+#  symmetric_norm: false

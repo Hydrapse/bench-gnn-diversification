@@ -1,0 +1,31 @@
+# @package _global_
+
+defaults:
+  - override /dataset: flickr.yaml
+
+runs: 10
+trial_dir: partition_eval
+
+dataset:
+  expert_id: 1
+  num_experts: 2
+  fraction: 0.5
+  group: homophily
+
+train:
+  epoch: 700
+  lr: 0.001
+  early_stopping: -1
+model:
+  name: ACMGCN
+  hidden_dim: 512
+  init_layers: 0
+  conv_layers: 2
+  norm: batch
+  out_norm: false
+  init_dropout: 0
+  dropout: 0.5
+  jk: last
+  residual: sum
+  model_type: acmgcn
+  variant: false

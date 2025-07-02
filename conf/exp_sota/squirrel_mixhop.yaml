@@ -1,0 +1,29 @@
+# @package _global_
+
+defaults:
+  - override /dataset: squirrel.yaml
+
+runs: 10
+
+dataset:
+  undirected: true
+
+train:
+  epoch: 1000
+  lr: 0.005
+  early_stopping: 200
+
+model:
+  name: MIXHOP
+  hidden_dim: 128
+  init_layers: 1
+  conv_layers: 5
+  norm: batch
+  out_norm: false
+  init_dropout: 0.2
+  dropout: 0.7
+  dropedge: 0
+  jk: null
+  residual: null
+
+  powers: [1, 2]

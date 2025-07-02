@@ -1,0 +1,32 @@
+# @package _global_
+
+defaults:
+  - override /dataset: flickr.yaml
+
+runs: 10
+
+log_logit: false
+
+train:
+  epoch: 2000
+  lr: 0.001
+
+model:
+  name: GCN # GCN, SAGE
+  hidden_dim: 128
+  init_layers: 0
+  conv_layers: 4  # hops
+  norm: batch  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.5
+  dropout: 0.5
+  jk: null  # cat
+  residual: cat  # sum, incep
+
+  ###########################
+  # Comments:
+  # GCN Test: 0.5552 +- 0.0036
+  #
+  # Important Param:
+  # - batch norm
+  # - dropout

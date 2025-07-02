@@ -1,0 +1,36 @@
+# @package _global_
+
+defaults:
+  - override /dataset: actor.yaml
+
+runs: 10
+
+dataset:
+  ptb_type: null
+  ptb_ratio: 0
+  name: actor
+  train_rate: 0.6
+  val_rate: 0.2
+  undirected: true
+train:
+  epoch: 1000
+  lr: 0.01
+  weight_decay: 0
+  early_stopping: -1
+  grad_norm: null
+  use_adamw: true
+  train_mask_rate: 1
+  use_label: false
+model:
+  name: GCN
+  hidden_dim: 512
+  init_layers: 1
+  conv_layers: 3
+  norm: layer
+  out_norm: false
+  init_dropout: 0.2
+  dropout: 0.3
+  dropedge: 0
+  jk: last
+  residual: cat
+  adj_norm: rw

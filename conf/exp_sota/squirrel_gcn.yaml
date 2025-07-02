@@ -1,0 +1,39 @@
+# @package _global_
+
+defaults:
+  - override /dataset: squirrel.yaml
+
+runs: 10
+
+log_logit: false
+
+dataset:
+  undirected: true
+
+train:
+  epoch: 500
+  lr: 0.01
+  weight_decay: 0
+  early_stopping: 200
+
+model:
+  name: GCN  # GCN
+  hidden_dim: 256
+  init_layers: 0
+  conv_layers: 5  # hops
+  norm: batch  # layer, batch
+  out_norm: false  # l2 norm
+  init_dropout: 0.5
+  dropout: 0.6
+  jk: last  # cat
+  residual: cat  # sum, incep, cat
+
+  ######### Comments #########
+
+  # Important Params:
+  # - init_layers: 1
+  # - jk: last
+  # - residual: sum
+  # - norm: batch
+  
+  # Valid: 43.32 ±1.20, Test: 42.82 ±2.10

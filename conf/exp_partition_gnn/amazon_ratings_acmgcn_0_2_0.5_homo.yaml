@@ -1,0 +1,28 @@
+# @package _global_
+
+defaults:
+  - override /dataset: amazon_ratings.yaml
+
+runs: 10
+trial_dir: partition_eval
+
+dataset:
+  expert_id: 0
+  num_experts: 2
+  fraction: 0.5
+  group: homophily
+
+train:
+  epoch: 2500
+  lr: 0.001
+
+model:
+  name: ACMGCN
+  hidden_dim: 512
+  init_layers: 1
+  conv_layers: 2
+  init_dropout: 0
+  dropout: 0.2
+
+  model_type: acmgcn
+  variant: false

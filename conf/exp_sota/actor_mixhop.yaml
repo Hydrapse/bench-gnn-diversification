@@ -1,0 +1,25 @@
+# @package _global_
+
+defaults:
+  - override /dataset: actor.yaml
+
+runs: 10
+
+train:
+  epoch: 1000
+  lr: 0.01
+
+model:
+  name: MIXHOP
+  hidden_dim: 512
+  init_layers: 1
+  conv_layers: 3
+  norm: layer
+  out_norm: false
+  init_dropout: 0.1
+  dropout: 0.6
+  dropedge: 0
+  jk: last
+  residual: cat
+
+  powers: [1, 2]

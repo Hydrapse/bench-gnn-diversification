@@ -1,0 +1,27 @@
+# @package _global_
+
+defaults:
+  - override /dataset: arxiv-year.yaml
+
+runs: 10
+
+dataset:
+  undirected: true
+
+train:
+  epoch: 2000
+  lr: 0.001
+
+model:
+  name: GCN
+  hidden_dim: 256
+  init_layers: 0
+  conv_layers: 4
+  norm: batch
+  out_norm: false
+  init_dropout: 0.1
+  dropout: 0.5
+  dropedge: 0
+  jk: null
+  residual: cat
+  adj_norm: sym
